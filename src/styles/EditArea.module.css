@@ -1,0 +1,32 @@
+.titlearea {
+  font-size: 32px;
+  cursor: test;
+  margin: 20px 0;
+}
+.titlearea:focus {
+  outline: none;
+}
+.titlearea:empty::before {
+  font-weight: 600;
+  content: '在此处输入标题';
+  color: #bbbfba;
+}
+.hr-solid {
+  border: 0;
+  border-top: 1px solid #bbbfba;
+}
+.content-area {
+  margin-top: 15px;
+}
+.content-area:focus {
+  outline: none;
+}
+.content-area .block {
+  width: 100%;
+  line-height: 26px;
+  font-size: 16px;
+  cursor: test;
+}
+.content-area .block:focus {
+  outline: none;
+}
