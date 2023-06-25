@@ -47,7 +47,7 @@ const reducer = (state, action) => {
                 mainBodyList: (() => {
                     let mainBodyList = state.mainBodyList
                     let index = mainBodyList.findIndex(item => item.prop.id === action.id)
-                    if(action.context === '' && mainBodyList.length !== 1){
+                    if(mainBodyList[index].context === '' && mainBodyList.length !== 1){
                         mainBodyList.splice(index, 1)
                         mainBodyList[index - 1].prop.datafocus = 'true'
                     }else{
@@ -89,24 +89,25 @@ function EditArea(){
     //输入处理
     const inputHandle = (e) => {
         if(e.nativeEvent.inputType === 'deleteContentBackward' || prefetchInput.current === true) return 
-        // e.target.blur()
+        flag.current = true
         dispatch({type: 'contextupdate', id: e.target.id, context: e.target.textContent})
     }
     //换行、退格处理
     const keyDownEnter = (e) => {
         if(flag.current === true){
-            e.preventDefault()
+            e.preventDefault() 
             return
         }
         if(e.code === 'Enter'){
+            e.preventDefault()
             if(prefetchInput.current === true){
                 prefetchInput.current = false
                 return
             }
-            dispatch({type: 'addblock', id: e.target.id})
+                dispatch({type: 'addblock', id: e.target.id})
         }
     }
-    const keydownBackspace = (e) => {
+    const keyupBackspace = (e) => {
         if(flag.current === true) return
         if(e.code === 'Backspace'){
             if( prefetchInput.current === true) return 
@@ -116,7 +117,9 @@ function EditArea(){
     //聚焦处理
     const handleFocus = (e) => {
         if(flag.current === true) return
-        dispatch({type: 'focus', id: e.target.id})
+        setTimeout(() => {
+            dispatch({type: 'focus', id: e.target.id})
+        }) //聚焦事件：光标位置计算行为的任务优先级经测试比微队列低，因此将任务推进计时队列确保拿到最新的光标位置，否则按同步执行拿到的光标位置为上一次的位置       
     }
     //预输入处理
     const prefetchStart = (e) => {
@@ -124,6 +127,7 @@ function EditArea(){
     }
     const prefetchEnd = (e) => {
         prefetchInput.current = false
+        dispatch({type: 'contextupdate', id: e.target.id, context: e.target.textContent})
     }
     //重新渲染焦点处理
     useEffect(() => {
@@ -133,10 +137,10 @@ function EditArea(){
             title.current.focus()
         }else{
             prevActiveDom.focus()
-            if(prevActiveDom.textContent.length - 1 < anchorOffset){
+            if(prevActiveDom.textContent.length < anchorOffset){
                 window.getSelection().collapse(prevActiveDom.firstChild || prevActiveDom , prevActiveDom.textContent.length)
             }else{
-                window.getSelection().collapse(prevActiveDom.firstChild || prevActiveDom , prevActiveDom.textContent === "" ? 0 : anchorOffset === 0 ? prevActiveDom.textContent.length: anchorOffset)
+                window.getSelection().collapse(prevActiveDom.firstChild || prevActiveDom , prevActiveDom.textContent === "" ? 0 : anchorOffset  === 0 ? prevActiveDom.textContent.length : anchorOffset)
             }
         }
     })
@@ -146,7 +150,7 @@ function EditArea(){
             return <item.tag {...item.prop} suppressContentEditableWarning ref={title}>{item.context}</item.tag>
         })}
         <hr className={styles['hr-solid']}></hr>
-        <div className={styles['content-area']} onInput={inputHandle} onKeyDown={(event) => { keyDownEnter(event); keydownBackspace(event)}} onFocus={handleFocus} onCompositionStart={prefetchStart} onCompositionEnd={prefetchEnd}>
+        <div className={styles['content-area']} onInput={inputHandle} onKeyUp={keyupBackspace} onKeyDown={keyDownEnter} onFocus={handleFocus} onCompositionStart={prefetchStart} onCompositionEnd={prefetchEnd}>
             {state.mainBodyList.map(item => {
                 return <item.tag {...item.prop} suppressContentEditableWarning>{item.context}</item.tag>
             })}
