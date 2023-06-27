@@ -48,8 +48,12 @@ const reducer = (state, action) => {
                     let mainBodyList = state.mainBodyList
                     let index = mainBodyList.findIndex(item => item.prop.id === action.id)
                     if(mainBodyList[index].context === '' && mainBodyList.length !== 1){
-                        mainBodyList.splice(index, 1)
-                        mainBodyList[index - 1].prop.datafocus = 'true'
+                        if(index === 0){
+                            mainBodyList.splice(index, 1)
+                            mainBodyList[index].prop.datafocus = 'true'
+                        }else{
+                            mainBodyList[index - 1].prop.datafocus = 'true'
+                        }
                     }else{
                         mainBodyList[index].context = action.context
                     }
@@ -98,7 +102,7 @@ function EditArea(){
             e.preventDefault() 
             return
         }
-        if(e.code === 'Enter'){
+        if(e.code === 'Enter' || e.code === 'NumpadEnter'){
             e.preventDefault()
             if(prefetchInput.current === true){
                 prefetchInput.current = false

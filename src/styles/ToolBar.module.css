@@ -1,0 +1,297 @@
+.toolbar {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  height: 64px;
+}
+.toolbar .filename {
+  width: 330px;
+  height: 50px;
+  padding: 9px 30px;
+}
+.toolbar .filename .app-icon {
+  float: left;
+}
+.toolbar .filename .app-icon svg {
+  display: block;
+}
+.toolbar .filename .filename-input {
+  float: left;
+  height: 32px;
+  padding: 6px 8px;
+}
+.toolbar .filename .filename-input input {
+  display: block;
+  min-width: 50px;
+  max-width: 150px;
+  line-height: 20px;
+  font-size: 14px;
+}
+.toolbar .filename .filename-input input:focus {
+  border: 1px solid #dee0e3;
+  box-shadow: rgba(31, 35, 41, 0.04) 0px 8px 24px 8px, rgba(31, 35, 41, 0.04) 0px 6px 12px 0px, rgba(31, 35, 41, 0.06) 0px 4px 8px -8px;
+}
+.toolbar .context-tools {
+  flex: 1;
+  height: 50px;
+  padding: 11px 30px;
+}
+.toolbar .context-tools .pre-font {
+  float: left;
+  height: 28px;
+  width: 48px;
+  padding: 0 5px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.toolbar .context-tools .pre-font .icon {
+  float: left;
+  height: 28;
+  padding: 4px 0;
+}
+.toolbar .context-tools .pre-font .dropdown-btn {
+  float: left;
+  padding: 5px 0;
+  height: 28px;
+  transition: 0.5s;
+}
+.toolbar .context-tools .pre-font:hover {
+  background-color: #e8e9e9;
+}
+.toolbar .context-tools .pre-font:hover .dropdown-btn {
+  transform: rotate(180deg);
+  transition: 0.5s;
+}
+.toolbar .context-tools .cut-off-rule {
+  float: left;
+  width: 0;
+  height: 28px;
+  margin: 0 10px;
+  border-left: 1px solid #dee0e3;
+}
+.toolbar .context-tools .align-content {
+  float: left;
+  height: 28px;
+  width: 48px;
+  padding: 0 5px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.toolbar .context-tools .align-content .icon {
+  float: left;
+  height: 28px;
+  padding: 4px 0;
+}
+.toolbar .context-tools .align-content .dropdown-btn {
+  float: left;
+  padding: 5px 0;
+  height: 28px;
+  transition: 0.5s;
+}
+.toolbar .context-tools .align-content:hover {
+  background-color: #e8e9e9;
+}
+.toolbar .context-tools .align-content:hover .dropdown-btn {
+  transform: rotate(180deg);
+  transition: 0.5s;
+}
+.toolbar .context-tools .oddbtn-container {
+  float: left;
+  height: 28px;
+  padding: 0 5px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.toolbar .context-tools .oddbtn-container .bold-icon {
+  float: left;
+  height: 28px;
+  padding: 4px 0;
+  margin: 0 10px;
+  border-radius: 4px;
+}
+.toolbar .context-tools .oddbtn-container .bold-icon:hover {
+  background-color: #e8e9e9;
+}
+.toolbar .context-tools .oddbtn-container .italic-icon {
+  float: left;
+  height: 28px;
+  padding: 4px 0;
+  margin: 0 10px;
+  border-radius: 4px;
+}
+.toolbar .context-tools .oddbtn-container .italic-icon:hover {
+  background-color: #e8e9e9;
+}
+.toolbar .context-tools .oddbtn-container .underline-icon {
+  float: left;
+  height: 28px;
+  padding: 4px 0;
+  margin: 0 10px;
+  border-radius: 4px;
+}
+.toolbar .context-tools .oddbtn-container .underline-icon:hover {
+  background-color: #e8e9e9;
+}
+.toolbar .context-tools .oddbtn-container .delline-icon {
+  float: left;
+  height: 28px;
+  padding: 4px 0;
+  margin: 0 10px;
+  border-radius: 4px;
+}
+.toolbar .context-tools .oddbtn-container .delline-icon:hover {
+  background-color: #e8e9e9;
+}
+.toolbar .context-tools .fontcolor-container {
+  float: left;
+  height: 28px;
+  border-radius: 4px;
+  margin: 0 10px;
+  cursor: pointer;
+}
+.toolbar .context-tools .fontcolor-container:hover {
+  background-color: #e8e9e9;
+}
+.toolbar .context-tools .fontcolor-container .fontcolor-icon {
+  float: left;
+  height: 28px;
+  padding: 4px 2px 4px 2px;
+  border: 1px solid #dee0e3;
+  border-right: 0px;
+  border-radius: 4px 0 0 4px;
+}
+.toolbar .context-tools .fontcolor-container .fontcolor-icon:hover {
+  background-color: #c7c7c7;
+}
+.toolbar .context-tools .fontcolor-container .color-Prompter {
+  float: left;
+  width: 10px;
+  height: 28px;
+  padding: 4px 0;
+  border: 1px solid #dee0e3;
+  border-radius: 0 4px 4px 0;
+  background-color: black;
+}
+.toolbar .context-tools .backgroundcolor-container {
+  float: left;
+  height: 28px;
+  border-radius: 4px;
+  margin: 0 10px;
+  cursor: pointer;
+}
+.toolbar .context-tools .backgroundcolor-container:hover {
+  background-color: #e8e9e9;
+}
+.toolbar .context-tools .backgroundcolor-container .backgroundcolor-icon {
+  float: left;
+  height: 28px;
+  padding: 4px 2px 4px 2px;
+  border: 1px solid #dee0e3;
+  border-right: 0px;
+  border-radius: 4px 0 0 4px;
+}
+.toolbar .context-tools .backgroundcolor-container .backgroundcolor-icon:hover {
+  background-color: #c7c7c7;
+}
+.toolbar .context-tools .backgroundcolor-container .color-Prompter {
+  float: left;
+  width: 10px;
+  height: 28px;
+  padding: 4px 0;
+  border: 1px solid #dee0e3;
+  border-radius: 0 4px 4px 0;
+  background-color: #fff;
+}
+.toolbar .context-tools .undoredobtn-container {
+  float: left;
+  height: 28px;
+  padding: 0 5px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.toolbar .context-tools .undoredobtn-container .undo-icon {
+  float: left;
+  height: 28px;
+  padding: 4px 0;
+  margin: 0 7px;
+  border-radius: 4px;
+}
+.toolbar .context-tools .undoredobtn-container .undo-icon:hover {
+  background-color: #e8e9e9;
+}
+.toolbar .context-tools .undoredobtn-container .redo-icon {
+  float: left;
+  height: 28px;
+  padding: 4px 0;
+  margin: 0 7px;
+  border-radius: 4px;
+  transform: rotateY(180deg);
+}
+.toolbar .context-tools .undoredobtn-container .redo-icon:hover {
+  background-color: #e8e9e9;
+}
+.toolbar .context-tools .text-format-container {
+  float: left;
+  height: 28px;
+  padding: 0 5px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.toolbar .context-tools .text-format-container .list-ol-icon {
+  float: left;
+  height: 28px;
+  padding: 4px 4px;
+  margin: 0 7px;
+  border-radius: 4px;
+}
+.toolbar .context-tools .text-format-container .list-ol-icon:hover {
+  background-color: #e8e9e9;
+}
+.toolbar .context-tools .text-format-container .list-ul-icon {
+  float: left;
+  height: 28px;
+  padding: 4px 4px;
+  margin: 0 7px;
+  border-radius: 4px;
+}
+.toolbar .context-tools .text-format-container .list-ul-icon:hover {
+  background-color: #e8e9e9;
+}
+.toolbar .context-tools .text-format-container .reduce-indentation-icon {
+  float: left;
+  height: 28px;
+  padding: 4px 4px;
+  margin: 0 7px;
+  border-radius: 4px;
+}
+.toolbar .context-tools .text-format-container .reduce-indentation-icon:hover {
+  background-color: #e8e9e9;
+}
+.toolbar .context-tools .text-format-container .increase-indentation-icon {
+  float: left;
+  height: 28px;
+  padding: 4px 4px;
+  margin: 0 7px;
+  border-radius: 4px;
+}
+.toolbar .context-tools .text-format-container .increase-indentation-icon:hover {
+  background-color: #e8e9e9;
+}
+.toolbar .context-tools .moretool-container {
+  float: left;
+  height: 28px;
+  padding: 0 5px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.toolbar .context-tools .moretool-container .more-icon {
+  float: left;
+  height: 28px;
+  padding: 4px 4px;
+  margin: 0 7px;
+  border-radius: 4px;
+}
+.toolbar .context-tools .moretool-container .more-icon:hover {
+  background-color: #e8e9e9;
+}

@@ -1,0 +1,297 @@
+.toolbar{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    height: 64px;
+   .filename{
+        width: 330px;
+        height: 50px;
+        padding: 9px 30px;
+        .app-icon{
+            float: left;
+            svg{
+                display: block;
+            }
+        }
+        .filename-input{
+            float: left;
+            height: 32px;
+            padding: 6px 8px;
+            input{
+                display: block;
+                min-width: 50px;
+                max-width: 150px;
+                line-height: 20px;
+                font-size: 14px;
+                &:focus{
+                    border: 1px solid #dee0e3;
+                    box-shadow:rgba(31, 35, 41, 0.04) 0px 8px 24px 8px, rgba(31, 35, 41, 0.04) 0px 6px 12px 0px, rgba(31, 35, 41, 0.06) 0px 4px 8px -8px;
+                }
+            }
+        }
+   }
+   .context-tools{
+        flex: 1;
+        height: 50px;
+        padding: 11px 30px;
+        .pre-font{
+            float: left;
+            height: 28px;
+            width: 48px;
+            padding: 0 5px;
+            border-radius: 4px;
+            cursor: pointer;
+            .icon{
+                float: left;
+                height: 28;
+                padding: 4px 0;
+            }
+            .dropdown-btn{
+                float: left;
+                padding: 5px 0;
+                height: 28px;
+                transition: 0.5s;
+            }
+            &:hover{
+                background-color: rgb(232, 233, 233);
+                .dropdown-btn{
+                    transform: rotate(180deg);
+                    transition: 0.5s;
+                }
+            }
+        }
+        .cut-off-rule{
+            float: left;
+            width: 0;
+            height: 28px;
+            margin: 0 10px;
+            border-left: 1px solid #dee0e3;
+        }
+        .align-content{
+            float: left;
+            height: 28px;
+            width: 48px;
+            padding: 0 5px;
+            border-radius: 4px;
+            cursor: pointer;
+            .icon{
+                float: left;
+                height: 28px;
+                padding: 4px 0;
+            }
+            .dropdown-btn{
+                float: left;
+                padding: 5px 0;
+                height: 28px;
+                transition: 0.5s;
+            }
+            &:hover{
+                background-color: rgb(232, 233, 233);
+                .dropdown-btn{
+                    transform: rotate(180deg);
+                    transition: 0.5s;
+                }
+            }
+        }
+        .oddbtn-container{
+            float: left;
+            height: 28px;
+            padding: 0 5px;
+            border-radius: 4px;
+            cursor: pointer;
+            .bold-icon{
+                float: left;
+                height: 28px;
+                padding: 4px 0;
+                margin: 0 10px;
+                border-radius: 4px;
+                &:hover {
+                    background-color: rgb(232, 233, 233);
+                }
+            }
+            .italic-icon{
+                float: left;
+                height: 28px;
+                padding: 4px 0;
+                margin: 0 10px;
+                border-radius: 4px;
+                &:hover {
+                    background-color: rgb(232, 233, 233);
+                }
+            }
+            .underline-icon{
+                float: left;
+                height: 28px;
+                padding: 4px 0;
+                margin: 0 10px;
+                border-radius: 4px;
+                &:hover {
+                    background-color: rgb(232, 233, 233);
+                }
+            }
+            .delline-icon{
+                float: left;
+                height: 28px;
+                padding: 4px 0;
+                margin: 0 10px;
+                border-radius: 4px;
+                &:hover {
+                    background-color: rgb(232, 233, 233);
+                }
+            }
+        }
+        .fontcolor-container{
+            float: left;
+            height: 28px;
+            border-radius: 4px;
+            margin: 0 10px;
+            &:hover{
+                background-color: rgb(232, 233, 233);
+            }
+            cursor: pointer;
+            .fontcolor-icon{
+                float: left;
+                height: 28px;
+                padding: 4px 2px 4px 2px;
+                border: 1px solid #dee0e3;
+                border-right: 0px;
+                border-radius: 4px 0 0 4px;
+                &:hover{
+                    background-color: rgb(199, 199, 199);
+                }
+            }
+            .color-Prompter{
+                float: left;
+                width: 10px;
+                height: 28px;
+                padding: 4px 0;
+                border: 1px solid #dee0e3;
+                border-radius: 0 4px 4px 0;
+                background-color: black;
+            }
+        }
+        .backgroundcolor-container{
+            float: left;
+            height: 28px;
+            border-radius: 4px;
+            margin: 0 10px;
+            cursor: pointer;
+            &:hover{
+                background-color: rgb(232, 233, 233);
+            }
+            .backgroundcolor-icon{
+                float: left;
+                height: 28px;
+                padding: 4px 2px 4px 2px;
+                border: 1px solid #dee0e3;
+                border-right: 0px;
+                border-radius: 4px 0 0 4px;
+                &:hover{
+                    background-color: rgb(199, 199, 199);
+                }
+            }
+            .color-Prompter{
+                float: left;
+                width: 10px;
+                height: 28px;
+                padding: 4px 0;
+                border: 1px solid #dee0e3;
+                border-radius: 0 4px 4px 0;
+                background-color: #fff;
+            }
+        }
+        .undoredobtn-container{
+            float: left;
+            height: 28px;
+            padding: 0 5px;
+            border-radius: 4px;
+            cursor: pointer;
+            .undo-icon{
+                float: left;
+                height: 28px;
+                padding: 4px 0;
+                margin: 0 7px;
+                border-radius: 4px;
+                &:hover {
+                    background-color: rgb(232, 233, 233);
+                }
+            }
+            .redo-icon{
+                float: left;
+                height: 28px;
+                padding: 4px 0;
+                margin: 0 7px;
+                border-radius: 4px;
+                transform: rotateY(180deg);
+                &:hover {
+                    background-color: rgb(232, 233, 233);
+                }
+            }
+        }
+        .text-format-container{
+            float: left;
+            height: 28px;
+            padding: 0 5px;
+            border-radius: 4px;
+            cursor: pointer;
+            .list-ol-icon{
+                float: left;
+                height: 28px;
+                padding: 4px 4px;
+                margin: 0 7px;
+                border-radius: 4px;
+                &:hover {
+                    background-color: rgb(232, 233, 233);
+                }
+            }
+            .list-ul-icon{
+                float: left;
+                height: 28px;
+                padding: 4px 4px;
+                margin: 0 7px;
+                border-radius: 4px;
+                &:hover {
+                    background-color: rgb(232, 233, 233);
+                }
+            }
+            .reduce-indentation-icon{
+                float: left;
+                height: 28px;
+                padding: 4px 4px;
+                margin: 0 7px;
+                border-radius: 4px;
+                &:hover {
+                    background-color: rgb(232, 233, 233);
+                }
+            }
+            .increase-indentation-icon{
+                float: left;
+                height: 28px;
+                padding: 4px 4px;
+                margin: 0 7px;
+                border-radius: 4px;
+                &:hover {
+                    background-color: rgb(232, 233, 233);
+                }
+            }
+        }
+        .moretool-container{
+            float: left;
+            height: 28px;
+            padding: 0 5px;
+            border-radius: 4px;
+            cursor: pointer;
+            .more-icon{
+                float: left;
+                height: 28px;
+                padding: 4px 4px;
+                margin: 0 7px;
+                border-radius: 4px;
+                &:hover {
+                    background-color: rgb(232, 233, 233);
+                }
+            }
+        }
+   }
+}

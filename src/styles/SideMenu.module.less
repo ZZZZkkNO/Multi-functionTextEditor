@@ -1,0 +1,98 @@
+.sideMenu{
+    .sideMenu-btn{
+        position: fixed;
+        top: 50%;
+        left: 0;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        border: 1px solid #dee0e3;
+        box-shadow:rgba(31, 35, 41, 0.04) 0px 8px 24px 8px, rgba(31, 35, 41, 0.04) 0px 6px 12px 0px, rgba(31, 35, 41, 0.06) 0px 4px 8px -8px;
+        transform: translate(-50%, -50%);
+        z-index: 98;
+        cursor: pointer;
+        &:hover{
+            transform: translate(0, -50%);
+            transition: 0.5s;
+            &::after{
+                position: absolute;
+                left: 260%;
+                transform: translate(-50%); 
+                top: -10px;
+                padding: 2px 10px;
+                box-shadow: 0 2px 9px #999;
+                background-color: #302b2b;
+                border-radius: 4px;
+                color: #ffffff; 
+                /*这里显示的内容为表格中自定义的labelTooltip属性对应的值*/
+                content: attr(tooltip);
+                white-space: nowrap;
+                font-size: 14px;
+                z-index: 2;
+                line-height: 20px;
+                height: 20px;
+            }
+        }
+        svg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+    .fileList{
+        position: fixed;
+        left: 0;
+        width: 280px;
+        height: calc(100% - 64px);
+        border: 1px solid #dee0e3;
+        border-radius: 6px;
+        background-color: #f5f7fa;
+        animation: listopen 0.5s;
+        .close-btn{
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 50px;
+            height: 28px;
+            border-radius: 14px;
+            border: 1px solid #dee0e3;
+            box-shadow:rgba(31, 35, 41, 0.04) 0px 8px 24px 8px, rgba(31, 35, 41, 0.04) 0px 6px 12px 0px, rgba(31, 35, 41, 0.06) 0px 4px 8px -8px;
+            line-height: 28px;
+            text-align: center;
+            cursor: pointer;
+            &:hover{
+                &::after{
+                    position: absolute;
+                    left: 100%;
+                    transform: translate(-50%); 
+                    top: 30px;
+                    padding: 2px 10px;
+                    box-shadow: 0 2px 9px #999;
+                    background-color: #302b2b;
+                    border-radius: 4px;
+                    color: #ffffff; 
+                    /*这里显示的内容为表格中自定义的labelTooltip属性对应的值*/
+                    content: attr(tooltip);
+                    white-space: nowrap;
+                    font-size: 14px;
+                    z-index: 2;
+                    line-height: 20px;
+                    height: 20px;
+                }
+            }
+            span{
+                font-size: 14px;
+            }
+        }
+    }
+}
+
+@keyframes listopen {
+    from{
+        transform: translateX(-100%);
+    }
+    to{
+        transform: translateX(0);
+    }
+}
