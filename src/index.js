@@ -4,9 +4,13 @@ import App from './App';
 //消除默认样式
 // import 'normalize.css'
 import './styles/reset.css'
+import { Provider } from 'react-redux';
+import store from './store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <App />
+    <Provider store={store}>
+        <App />
+    </Provider>
 );
 
