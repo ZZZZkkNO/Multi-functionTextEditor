@@ -58,6 +58,26 @@ function Toolbar(){
                         <svg t="1687790360741" className="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3707" width="18" height="18"><path d="M787.2 380.8c-9.6-9.6-22.4-12.8-35.2-12.8l-480 3.2c-12.8 0-25.6 3.2-35.2 12.8-19.2 19.2-19.2 48 0 67.2l240 240c0 0 0 0 0 0 0 0 0 0 0 0 3.2 3.2 9.6 6.4 12.8 9.6 0 0 3.2 3.2 3.2 3.2 16 6.4 38.4 3.2 51.2-9.6l240-243.2C806.4 428.8 803.2 400 787.2 380.8z" p-id="3708"></path></svg>
                     </span>
                 </div>
+                <div className={styles['dropdown-menu']}>
+                    <div className={styles['panel-left']}>
+                        <div className='icon'>
+                            <svg t="1687937226305" className="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2287" width="16" height="16"><path d="M96 128h832v96H96zM96 576h832v96H96zM96 352h576v96H96zM96 800h576v96H96z" p-id="2288"></path></svg>
+                        </div>
+                        <div className='content'>左对齐</div>
+                    </div>
+                    <div className={styles['panel-center']}>
+                        <div className='icon'>
+                            <svg t="1687937648937" className="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3324" width="16" height="16"><path d="M96 128h832v96H96zM96 576h832v96H96zM224 352h576v96H224zM224 800h576v96H224z" p-id="3325"></path></svg>
+                        </div>
+                        <div className='content'>居中对齐</div>
+                    </div>
+                    <div className={styles['panel-right']}>
+                        <div className='icon'>
+                            <svg t="1687937680796" className="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4360" width="16" height="16"><path d="M96 128h832v96H96zM96 576h832v96H96zM352 352h576v96H352zM352 800h576v96H352z" p-id="4361"></path></svg>
+                        </div>
+                        <div className='content'>右对齐</div>
+                    </div>
+                </div>
             </div>
             <div className={styles['cut-off-rule']}></div>
             <div className={styles['oddbtn-container']}>

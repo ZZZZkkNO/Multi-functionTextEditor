@@ -148,6 +148,7 @@
             width: 48px;
             padding: 0 5px;
             border-radius: 4px;
+            overflow: hidden;
             cursor: pointer;
             .icon{
                 float: left;
@@ -160,8 +161,36 @@
                 height: 28px;
                 transition: 0.5s;
             }
+            .dropdown-menu{
+                position: relative;
+                left: -5px;
+                top: 5px;
+                width: 152px;
+                padding: 12px;
+                border-radius: 8px;
+                border: 1px solid #dee0e3;
+                box-shadow:rgba(31, 35, 41, 0.04) 0px 8px 24px 8px, rgba(31, 35, 41, 0.04) 0px 6px 12px 0px, rgba(31, 35, 41, 0.06) 0px 4px 8px -8px;
+                background-color: #fff;
+                overflow: hidden;
+                & > div{
+                    height: 40px;
+                    padding: 12px 10px 12px 8px;
+                    border-radius: 4px;
+                    & > div {
+                        float: left;
+                        line-height: 16px;
+                    }
+                    & > div:first-child{
+                        margin-right: 10px;
+                    }
+                    &:hover{
+                        background-color: rgb(232, 233, 233)
+                    }
+                }
+            }
             &:hover{
                 background-color: rgb(232, 233, 233);
+                overflow: visible;
                 .dropdown-btn{
                     transform: rotate(180deg);
                     transition: 0.5s;

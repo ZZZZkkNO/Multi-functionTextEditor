@@ -92,7 +92,8 @@ function EditArea(){
     const prefetchInput = useRef(false)//预输入标志（对中文输入input、按键事件等处理）
     //输入处理
     const inputHandle = (e) => {
-        if(e.nativeEvent.inputType === 'deleteContentBackward' || prefetchInput.current === true) return 
+        let type = e.nativeEvent.inputType
+        if( type === 'deleteContentBackward' || prefetchInput.current === true) return 
         flag.current = true
         dispatch({type: 'contextupdate', id: e.target.id, context: e.target.textContent})
     }
@@ -144,7 +145,8 @@ function EditArea(){
             if(prevActiveDom.textContent.length < anchorOffset){
                 window.getSelection().collapse(prevActiveDom.firstChild || prevActiveDom , prevActiveDom.textContent.length)
             }else{
-                window.getSelection().collapse(prevActiveDom.firstChild || prevActiveDom , prevActiveDom.textContent === "" ? 0 : anchorOffset  === 0 ? prevActiveDom.textContent.length : anchorOffset)
+                window.getSelection().collapse(prevActiveDom.firstChild || prevActiveDom , 
+                prevActiveDom.textContent === "" ? 0 : anchorOffset  === 0 ? prevActiveDom.textContent.length : anchorOffset)
             }
         }
     })
