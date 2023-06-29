@@ -1,13 +1,23 @@
+import action from '../store/actions'
 import styles from '../styles/ToolBar.module.css'
+import { connect } from 'react-redux'
 
-function Toolbar(){
+function Toolbar(props){
+    const { filename, modifyfilename, contentFormat } = props
+    const changeFilename = (e) => {
+        modifyfilename({ fileName: e.target.value })
+    }
+    const changeContentformat = (e) => {
+        let format = e.target.getAttribute('data-format')
+        contentFormat({ titleformat : format })
+    }
     return<div className={styles.toolbar}>
         <div className={styles.filename}>
             <div className={styles['app-icon']}>
                 <svg t="1687780219486" className="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="16498" width="32" height="32"><path d="M128 31.9488h768c17.7152 0 31.9488 14.336 31.9488 31.9488V975.872c0 17.7152-14.336 31.9488-31.9488 31.9488H128c-17.7152 0-31.9488-14.336-31.9488-31.9488V64c0-17.7152 14.2336-32.0512 31.9488-32.0512z" fill="#F0EEE2" p-id="16499"></path><path d="M655.9744 64v240.0256l79.9744-79.9744 79.9744 79.9744V64H655.9744zM128 960h64v-896H128v896z" fill="#BBAA9C" p-id="16500"></path><path d="M335.9744 864.0512h-128c-8.8064 0-15.9744 7.168-15.9744 15.9744s7.168 15.9744 15.9744 15.9744h128c8.8064 0 15.9744-7.168 15.9744-15.9744s-7.168-15.9744-15.9744-15.9744zM768 560.0256h-48.0256c-8.8064 0-15.9744 7.168-15.9744 15.9744s7.168 15.9744 15.9744 15.9744H768c8.8064 0 15.9744-7.168 15.9744-15.9744s-7.168-15.9744-15.9744-15.9744z m-256-79.9744c0-8.8064-7.168-15.9744-15.9744-15.9744h-79.9744c-8.8064 0.2048-15.7696 7.5776-15.5648 16.384 0.2048 8.4992 7.0656 15.36 15.5648 15.5648h79.9744c8.8064 0 15.9744-7.168 15.9744-15.9744z m-48.0256-320.1024h64c8.8064 0 15.9744-7.168 15.9744-15.9744s-7.168-15.9744-15.9744-15.9744h-64c-8.8064 0-15.9744 7.168-15.9744 15.9744s7.168 15.9744 15.9744 15.9744z m-304.0256 128h128c8.8064 0 15.9744-7.168 15.9744-15.9744s-7.168-15.9744-15.9744-15.9744h-128c-8.8064 0-15.9744 7.168-15.9744 15.9744s7.168 15.9744 15.9744 15.9744z m560.0256-143.9744h31.9488c8.8064 0 15.9744-7.168 15.9744-15.9744s-7.168-15.9744-15.9744-15.9744h-31.9488c-8.8064 0-15.9744 7.168-15.9744 15.9744s7.168 15.9744 15.9744 15.9744z m207.9744 640H816.0256c-8.8064 0-15.9744 7.168-15.9744 15.9744s7.168 15.9744 15.9744 15.9744h112.0256c8.8064 0 15.9744-7.168 15.9744-15.9744s-7.168-15.9744-16.0768-15.9744z m-303.9232-79.9744h-128c-8.8064 0-15.9744 7.168-15.9744 15.9744s7.168 15.9744 15.9744 15.9744h128c8.8064 0 15.9744-7.168 15.9744-15.9744s-7.168-15.9744-15.9744-15.9744z m128-304.0256c-8.8064 0-15.9744 7.168-15.9744 15.9744s7.168 15.9744 15.9744 15.9744 15.9744-7.168 15.9744-15.9744-7.168-15.9744-15.9744-15.9744zM224.0512 624.0256c0-8.8064-7.168-15.9744-15.9744-15.9744h-48.0256c-8.8064 0.2048-15.7696 7.5776-15.5648 16.384 0.2048 8.4992 7.0656 15.36 15.5648 15.5648h48.0256c8.704 0 15.872-7.168 15.9744-15.9744z" fill="#D8D5BA" p-id="16501"></path><path d="M896 0H128C92.672 0 64 28.672 64 64v896c0 35.328 28.672 64 64 64h768c35.328 0 64-28.672 64-64v-896C960 28.672 931.328 0 896 0zM671.9488 64h128v201.3184l-52.736-52.6336c-6.2464-6.2464-16.384-6.2464-22.6304 0l-52.736 52.6336V64z m-479.9488 896H128v-896h64v896z m704 0H224.0512v-896H640v240.0256c0 8.8064 7.168 15.9744 15.9744 15.9744 4.1984 0 8.2944-1.7408 11.264-4.7104l68.7104-68.7104 68.7104 68.7104c6.2464 6.2464 16.384 6.2464 22.6304 0 2.9696-2.9696 4.7104-7.0656 4.7104-11.264V64H896v896z" fill="#5F4E56" p-id="16502"></path></svg>
             </div>
-            <div className={styles['filename-input']}>
-                <input type="text" maxLength={30}/>
+            <div className={styles['filename-input']} onBlur={changeFilename}>
+                <input type="text" maxLength={30} defaultValue={filename}/>
             </div>
         </div>
         <div className={styles['context-tools']}>
@@ -22,27 +32,27 @@ function Toolbar(){
                         <svg t="1687790360741" className="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3707" width="18" height="18"><path d="M787.2 380.8c-9.6-9.6-22.4-12.8-35.2-12.8l-480 3.2c-12.8 0-25.6 3.2-35.2 12.8-19.2 19.2-19.2 48 0 67.2l240 240c0 0 0 0 0 0 0 0 0 0 0 0 3.2 3.2 9.6 6.4 12.8 9.6 0 0 3.2 3.2 3.2 3.2 16 6.4 38.4 3.2 51.2-9.6l240-243.2C806.4 428.8 803.2 400 787.2 380.8z" p-id="3708"></path></svg>
                     </span>
                 </div>
-                <div className={styles['dropdown-menu']}>
-                    <div className={styles['panel-h0']}>
-                        <div className={styles['content']}>正文</div>
+                <div className={styles['dropdown-menu']} onClick={changeContentformat}>
+                    <div className={styles['panel-h0']} data-format='h0'>
+                        <div className={styles['content']} data-format='h0'>正文</div>
                     </div>
-                    <div className={styles['panel-h1']}>
-                        <div className={styles['content']}>标题一</div>
+                    <div className={styles['panel-h1']} data-format='h1'>
+                        <div className={styles['content']} data-format='h1'>标题一</div>
                     </div>
-                    <div className={styles['panel-h2']}>
-                        <div className={styles['content']}>标题二</div>
+                    <div className={styles['panel-h2']} data-format='h2'>
+                        <div className={styles['content']} data-format='h2'>标题二</div>
                     </div>
-                    <div className={styles['panel-h3']}>
-                        <div className={styles['content']}>标题三</div>
+                    <div className={styles['panel-h3']} data-format='h3'>
+                        <div className={styles['content']} data-format='h3'>标题三</div>
                     </div>
-                    <div className={styles['panel-h4']}>
-                        <div className={styles['content']}>标题四</div>
+                    <div className={styles['panel-h4']} data-format='h4'>
+                        <div className={styles['content']} data-format='h4'>标题四</div>
                     </div>
-                    <div className={styles['panel-h5']}>
-                        <div className={styles['content']}>标题五</div>
+                    <div className={styles['panel-h5']} data-format='h5'>
+                        <div className={styles['content']} data-format='h5'>标题五</div>
                     </div>
-                    <div className={styles['panel-h6']}>
-                        <div className={styles['content']}>标题六</div>
+                    <div className={styles['panel-h6']} data-format='h6'>
+                        <div className={styles['content']} data-format='h6'>标题六</div>
                     </div>
                 </div>
             </div>
@@ -166,4 +176,4 @@ function Toolbar(){
         </div>
     </div>
 }
-export default Toolbar
+export default connect( state => state.edit, action.edit )(Toolbar)

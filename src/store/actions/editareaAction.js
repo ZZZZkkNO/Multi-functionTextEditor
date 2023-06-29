@@ -24,6 +24,24 @@ const editareaAction = {
             type: TYPES.FOCUS,
             ...obj
         } 
+    },
+    blur(obj){
+        return {
+            type: TYPES.BLUR,
+            ...obj
+        }
+    },
+    modifyfilename(obj){
+        return {
+            type: TYPES.ChANGEFILENAME,
+            ...obj
+        }
+    },
+    contentFormat(obj){
+        return {
+            type: TYPES.CONTENTFORMAT,
+            ...obj
+        }
     }
 }
 

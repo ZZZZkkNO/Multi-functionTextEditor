@@ -24,6 +24,7 @@ const nanoid = function(size = 21){
     return id
 }
 
+//深拷贝
 const cloneDeep = (source, hash = new WeakMap()) => {
     if(typeof source !== 'object' || source === null){
         return source
@@ -61,9 +62,15 @@ const cloneDeep = (source, hash = new WeakMap()) => {
     return ans
 }
 
+const recognizeTargetType = (target) => {
+    let typeString = Object.prototype.toString.call(target)
+    return typeString.split(' ')[1].replace(']', '')
+}
+
 export {
     nanoid,
     createBlock,
     debounce,
-    cloneDeep
+    cloneDeep,
+    recognizeTargetType
 }

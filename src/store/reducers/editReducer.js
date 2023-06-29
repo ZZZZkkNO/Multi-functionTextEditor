@@ -2,7 +2,8 @@ import * as TYPES from '../actionTypes'
 import { nanoid, createBlock, cloneDeep } from '../../assets/utils'
 //初始值（暂时先写固定，后期从后台请求数据）
 const initial = {
-    mainBodyList: [{tag: 'div', prop: {contentEditable: true, id: nanoid(), key: nanoid(), datafocus: 'false'}, context: ''}],
+    filename: '新建文件(1)',
+    mainBodyList: [{tag: 'div', prop: {contentEditable: true, id: nanoid(), key: nanoid(), datafocus: 'false', format: 'h0'}, context: ''}],
     title: [{tag: 'div', prop: {id: 'title', contentEditable: true, key: nanoid()},context: '' }]
 }
 
@@ -72,6 +73,41 @@ const editReducer = function(state = initial, action){
                         mainBodyList[prevIndex].prop.datafocus = 'false'
                     }
                     mainBodyList[index].prop.datafocus = 'true'
+                    return mainBodyList
+                })()
+            }
+        }
+        case TYPES.BLUR: {
+            state =  cloneDeep(state)
+            return {
+                ...state,
+                mainBodyList: (() => {
+                    let mainBodyList = state.mainBodyList
+                    let index = mainBodyList.findIndex(item => item.prop.datafocus === 'true')
+                    if(index !== -1){
+                        mainBodyList[index].prop.datafocus = 'false'
+                    }
+                    return mainBodyList
+                })()
+            }
+        }
+        case TYPES.ChANGEFILENAME: {
+            state = cloneDeep(state)
+            state.filename = action.fileName
+            return state
+        }
+        case TYPES.CONTENTFORMAT: {
+            state = cloneDeep(state)
+            return{
+                ...state,
+                mainBodyList: (() => {
+                    console.log(action.titleformat)
+                    let mainBodyList = state.mainBodyList
+                    let index = mainBodyList.findIndex(item => item.prop.datafocus === 'true')
+                    console.log(mainBodyList)
+                    if(index !== -1){
+                        mainBodyList[index].prop.format = action.titleformat
+                    }
                     return mainBodyList
                 })()
             }

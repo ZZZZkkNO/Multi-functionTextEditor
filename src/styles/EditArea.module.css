@@ -23,10 +23,33 @@
 }
 .content-area .block {
   width: 100%;
-  line-height: 26px;
   font-size: 16px;
   cursor: test;
 }
 .content-area .block:focus {
   outline: none;
+}
+.content-area div[format='h1'] {
+  font-size: 26px;
+  font-weight: bold;
+}
+.content-area div[format='h2'] {
+  font-size: 22px;
+  font-weight: bold;
+}
+.content-area div[format='h3'] {
+  font-size: 20px;
+  font-weight: bold;
+}
+.content-area div[format='h4'] {
+  font-size: 18px;
+  font-weight: bold;
+}
+.content-area div[format='h5'] {
+  font-size: 16px;
+  font-weight: bold;
+}
+.content-area div[format='h6'] {
+  font-size: 14px;
+  font-weight: bold;
 }
