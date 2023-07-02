@@ -42,6 +42,12 @@ const editareaAction = {
             type: TYPES.CONTENTFORMAT,
             ...obj
         }
+    },
+    contentAlign(obj){
+        return {
+            type: TYPES.CONTENTALIGN,
+            ...obj
+        }
     }
 }
 

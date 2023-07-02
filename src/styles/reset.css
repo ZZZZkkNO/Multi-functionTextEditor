@@ -2,7 +2,9 @@
     box-sizing: border-box;
 }
 
- 
+::selection{
+    background-color: rgb(217, 229, 254);
+}
 /* 去除常见标签默认的 margin 和 padding */
 body,
 h1,

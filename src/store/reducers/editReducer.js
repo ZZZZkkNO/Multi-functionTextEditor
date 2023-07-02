@@ -35,7 +35,9 @@ const editReducer = function(state = initial, action){
                     let index = mainBodyList.findIndex(item => item.prop.id === action.id)
                     let prevIndex = mainBodyList.findIndex(item => item.prop.datafocus === 'true')
                     mainBodyList[prevIndex].prop.datafocus = 'false'
-                    mainBodyList.splice( index + 1, 0, createBlock('div', {className: action.className ,contentEditable: true, id: nanoid(), key: nanoid(), datafocus: 'true'}))
+                    let newContext = mainBodyList[index].context.substring(action.start)
+                    mainBodyList[index].context = mainBodyList[index].context.substring(0, action.start)
+                    mainBodyList.splice( index + 1, 0, createBlock('div', {className: action.className ,contentEditable: true, id: nanoid(), key: nanoid(), datafocus: 'true'}, newContext))
                     return mainBodyList
                 })()
             }
@@ -47,15 +49,20 @@ const editReducer = function(state = initial, action){
                 mainBodyList: (() => {
                     let mainBodyList = state.mainBodyList
                     let index = mainBodyList.findIndex(item => item.prop.id === action.id)
-                    if(mainBodyList[index].context === '' && mainBodyList.length !== 1){
-                        if(index === 0){
-                            mainBodyList.splice(index, 1)
-                            mainBodyList[index].prop.datafocus = 'true'
-                        }else{
-                            mainBodyList[index - 1].prop.datafocus = 'true'
-                        }
+                    if(action.anchorOffset === 0 && index === 0 && mainBodyList[index].context.length !== 0){
+                        return mainBodyList
+                    }else if(action.anchorOffset === 0 && index === 0 && mainBodyList[index].context.length === 0){
+                        mainBodyList.splice(index, 1)
+                        mainBodyList[index].prop.datafocus = 'true'
+                    }else if(action.anchorOffset === 0 && index !== 0){
+                        let context = mainBodyList[index].context
+                        mainBodyList[index - 1].context = mainBodyList[index - 1].context + context
+                        mainBodyList[index - 1].prop.datafocus = 'true'
+                        mainBodyList.splice(index, 1)
                     }else{
-                        mainBodyList[index].context = action.context
+                        let contextArr = mainBodyList[index].context.split('')
+                        contextArr.splice(action.anchorOffset - 1, 1)
+                        mainBodyList[index].context = contextArr.join('')
                     }
                     return mainBodyList
                 })()
@@ -104,9 +111,23 @@ const editReducer = function(state = initial, action){
                     console.log(action.titleformat)
                     let mainBodyList = state.mainBodyList
                     let index = mainBodyList.findIndex(item => item.prop.datafocus === 'true')
-                    console.log(mainBodyList)
                     if(index !== -1){
                         mainBodyList[index].prop.format = action.titleformat
+                    }
+                    return mainBodyList
+                })()
+            }
+        }
+        case TYPES.CONTENTALIGN: {
+            state = cloneDeep(state)
+            return{
+                ...state,
+                mainBodyList: (() => {
+                    console.log(action.titleformat)
+                    let mainBodyList = state.mainBodyList
+                    let index = mainBodyList.findIndex(item => item.prop.datafocus === 'true')
+                    if(index !== -1){
+                        mainBodyList[index].prop.align = action.align
                     }
                     return mainBodyList
                 })()

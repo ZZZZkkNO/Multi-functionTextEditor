@@ -17,13 +17,17 @@
 }
 .content-area {
   margin-top: 15px;
+  min-height: 100vh;
 }
 .content-area:focus {
   outline: none;
 }
 .content-area .block {
+  margin-top: 8px;
   width: 100%;
+  padding: 0 5px 0 5px;
   font-size: 16px;
+  border-radius: 4px;
   cursor: test;
 }
 .content-area .block:focus {
@@ -52,4 +56,10 @@
 .content-area div[format='h6'] {
   font-size: 14px;
   font-weight: bold;
+}
+.content-area div[align] {
+  text-align: arr(align);
+}
+.content-area div[selected='true'] {
+  background-color: #d9e5fe;
 }

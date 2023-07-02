@@ -3,7 +3,7 @@ import styles from '../styles/ToolBar.module.css'
 import { connect } from 'react-redux'
 
 function Toolbar(props){
-    const { filename, modifyfilename, contentFormat } = props
+    const { filename, modifyfilename, contentFormat, contentAlign } = props
     const changeFilename = (e) => {
         modifyfilename({ fileName: e.target.value })
     }
@@ -69,19 +69,19 @@ function Toolbar(props){
                     </span>
                 </div>
                 <div className={styles['dropdown-menu']}>
-                    <div className={styles['panel-left']}>
+                    <div className={styles['panel-left']} data-align='left' onClick={(e) => {contentAlign({align: 'left'})}}>
                         <div className='icon'>
                             <svg t="1687937226305" className="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2287" width="16" height="16"><path d="M96 128h832v96H96zM96 576h832v96H96zM96 352h576v96H96zM96 800h576v96H96z" p-id="2288"></path></svg>
                         </div>
                         <div className='content'>左对齐</div>
                     </div>
-                    <div className={styles['panel-center']}>
+                    <div className={styles['panel-center']} data-align='center' onClick={(e) => {contentAlign({align: 'center'})}}>
                         <div className='icon'>
                             <svg t="1687937648937" className="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3324" width="16" height="16"><path d="M96 128h832v96H96zM96 576h832v96H96zM224 352h576v96H224zM224 800h576v96H224z" p-id="3325"></path></svg>
                         </div>
                         <div className='content'>居中对齐</div>
                     </div>
-                    <div className={styles['panel-right']}>
+                    <div className={styles['panel-right']} data-align='right' onClick={(e) => {contentAlign({align: 'right'})}}>
                         <div className='icon'>
                             <svg t="1687937680796" className="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4360" width="16" height="16"><path d="M96 128h832v96H96zM96 576h832v96H96zM352 352h576v96H352zM352 800h576v96H352z" p-id="4361"></path></svg>
                         </div>

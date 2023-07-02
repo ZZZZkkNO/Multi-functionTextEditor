@@ -10,6 +10,20 @@ const debounce = function(fn, wait, immediateFn = () => {}){
         clearTimeout(timer)
         timer = setTimeout(() => {
             fn.apply(this, arguments)
+            timer = null
+        }, wait)
+    }
+}
+//节流
+const throttle = function(fn, wait, immediateFn = () => {}){
+    immediateFn()
+    let isRun = true
+    return function(){
+        if(!isRun) return 
+        isRun = false
+        setTimeout(() => {
+            fn.apply(this, arguments)
+            isRun = true
         }, wait)
     }
 }
@@ -72,5 +86,6 @@ export {
     createBlock,
     debounce,
     cloneDeep,
-    recognizeTargetType
+    recognizeTargetType,
+    throttle
 }

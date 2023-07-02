@@ -20,14 +20,18 @@
 
 .content-area{
     margin-top: 15px;
+    min-height: 100vh;
     &:focus{
         outline: none;
     }
     .block{
+        margin-top: 8px;
         width: 100%;
+        padding: 0 5px 0 5px;
         font-size: 16px;
+        border-radius: 4px;
         cursor: test;
-        &:focus{
+        &:focus{ 
             outline: none;
         }
     }
@@ -54,5 +58,11 @@
      div[format='h6']{
         font-size: 14px;
         font-weight: bold;
+     }
+     div[align]{
+        text-align: arr(align);
+     }
+     div[selected = 'true']{
+        background-color: rgb(217, 229, 254)
      }
 }

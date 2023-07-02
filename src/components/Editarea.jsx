@@ -39,20 +39,39 @@ const EditArea = React.forwardRef(function(props, ref){
             }
             flag.current = true
             anchorOffset.current =  window.getSelection().anchorOffset
-            enter({id: e.target.id})
+            enter({id: e.target.id, start: anchorOffset.current})
+            anchorOffset.current = 0
         }
     }
-    const keyupBackspace = (e) => {
+    const keyDownBackspace = (e) => {
         if(flag.current === true) return
         if(e.code === 'Backspace'){
+            e.preventDefault()
             if( prefetchInput.current === true) return
-            flag.current = true 
-            anchorOffset.current =  window.getSelection().anchorOffset
-            backspace({id: e.target.id, context: e.target.textContent})
+            flag.current = true
+            if(anchorOffset.current === 0 && e.target.parentElement.childElementCount === 1){
+                return 
+            }else if(anchorOffset.current === 0 && e.target.textContent.length !== 0 && e.target.parentElement.firstChild === e.target){
+                return 
+            }else if(anchorOffset.current === 0 && e.target.parentElement.firstChild === e.target){
+                flag.current = true
+                anchorOffset.current = e.target.nextSibling.textContent.length
+            }else if(anchorOffset.current === 0){
+                flag.current = true
+                anchorOffset.current = e.target.previousSibling.textContent.length
+            }else{
+                flag.current = true
+                anchorOffset.current =  (window.getSelection().anchorOffset) - 1
+            }
+            backspace({id: e.target.id, anchorOffset: window.getSelection().anchorOffset})
         }
     }
     //聚焦处理
     const handleFocus = (e) => {
+        let selDom = document.querySelectorAll("[selected='true']")
+        if(selDom !== null){
+            selDom.forEach(item => item.removeAttribute('selected'))
+        }
         if(flag.current === true) return
         flag.current = true
         setTimeout(() => {
@@ -70,6 +89,12 @@ const EditArea = React.forwardRef(function(props, ref){
         anchorOffset.current =  window.getSelection().anchorOffset
         input({id: e.target.id, context: e.target.textContent})
     }
+    //点击处理
+    const handleClick = (e) => {
+        e.stopPropagation()
+        if(flag.current === true) return
+        anchorOffset.current = window.getSelection().anchorOffset
+    }
     //重新渲染焦点处理
     useEffect(() => {
         flag.current = false
@@ -77,13 +102,14 @@ const EditArea = React.forwardRef(function(props, ref){
         if(prevActiveDom === null){
             return
         }else{
-            prevActiveDom.focus()
-            if(prevActiveDom.textContent.length < anchorOffset){
-                window.getSelection().collapse(prevActiveDom.firstChild || prevActiveDom , prevActiveDom.textContent.length)
-            }else{
-                window.getSelection().collapse(prevActiveDom.firstChild || prevActiveDom , 
-                prevActiveDom.textContent === "" ? 0 : anchorOffset.current  === 0 ? prevActiveDom.textContent.length : anchorOffset.current)
-            }
+            // prevActiveDom.focus()
+            // if(prevActiveDom.textContent.length < anchorOffset){
+            //     window.getSelection().collapse(prevActiveDom.firstChild || prevActiveDom , prevActiveDom.textContent.length)
+            // }else{
+            //     window.getSelection().collapse(prevActiveDom.firstChild || prevActiveDom , 
+            //     prevActiveDom.textContent === "" ? 0 : anchorOffset.current  === 0 ? prevActiveDom.textContent.length : anchorOffset.current)
+            // }
+            window.getSelection().collapse(prevActiveDom.firstChild || prevActiveDom , anchorOffset.current)
         }
     })
 
@@ -92,7 +118,13 @@ const EditArea = React.forwardRef(function(props, ref){
             return <item.tag {...item.prop} className={styles.titlearea} suppressContentEditableWarning>{item.context}</item.tag>
         })}
         <hr className={styles['hr-solid']}></hr>
-        <div className={styles['content-area']} onInput={inputHandle} onKeyUp={keyupBackspace} onKeyDown={keyDownEnter} onFocus={handleFocus} onCompositionStart={prefetchStart} onCompositionEnd={prefetchEnd} onClick={(e) => {e.stopPropagation()}}>
+        <div className={styles['content-area']} 
+            onInput={inputHandle} 
+            onKeyDown={(e) => {keyDownEnter(e); keyDownBackspace(e)}} 
+            onFocus={handleFocus} 
+            onCompositionStart={prefetchStart} 
+            onCompositionEnd={prefetchEnd}
+            onClick={handleClick}>
             {mainBodyList.map(item => {
                 return <item.tag {...item.prop} className={styles.block} suppressContentEditableWarning>{item.context}</item.tag>
             })}
