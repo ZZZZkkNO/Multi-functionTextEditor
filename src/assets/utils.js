@@ -81,11 +81,34 @@ const recognizeTargetType = (target) => {
     return typeString.split(' ')[1].replace(']', '')
 }
 
+const transformDOM = (dom) => {
+    let result = []
+    let nodeList = dom.childNodes
+    for(let i of nodeList){
+        let virualDom = {}
+        virualDom['tag'] = i.tagName.toLowerCase()
+        let attributes = i.attributes
+        let obj = {}
+        for(let j = 0; j < attributes.length; j++){
+            let attrName = attributes[j].name
+            if(attrName === 'contenteditable'){
+                attrName = 'contentEditable'
+            }
+            obj[attrName] = i.getAttribute(attrName)
+        }
+        virualDom['prop'] = obj
+        virualDom['context'] = i.textContent
+        result.push(virualDom)
+    }
+    return result
+}
+
 export {
     nanoid,
     createBlock,
     debounce,
     cloneDeep,
     recognizeTargetType,
-    throttle
+    throttle,
+    transformDOM
 }

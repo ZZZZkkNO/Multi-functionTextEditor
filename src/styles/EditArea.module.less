@@ -1,68 +1,102 @@
+.titlearea {
+   font-size: 32px;
+   cursor: test;
+   margin: 20px 0;
 
-.titlearea{
-    font-size: 32px;
-    cursor: test;
-    margin: 20px 0;
-    &:focus{
-        outline: none;
-    }
-    &:empty::before{
-        font-weight: 600;
-        content: '在此处输入标题';
-        color: rgb(187, 191, 186);
-    }
+   &:focus {
+      outline: none;
+   }
+
+   &:empty::before {
+      font-weight: 600;
+      content: '在此处输入标题';
+      color: rgb(187, 191, 186);
+   }
 }
 
-.hr-solid{
-    border: 0;
-    border-top: 1px solid rgb(187, 191, 186)
+.hr-solid {
+   border: 0;
+   border-top: 1px solid rgb(187, 191, 186)
 }
 
-.content-area{
-    margin-top: 15px;
-    min-height: 100vh;
-    &:focus{
-        outline: none;
-    }
-    .block{
-        margin-top: 8px;
-        width: 100%;
-        padding: 0 5px 0 5px;
-        font-size: 16px;
-        border-radius: 4px;
-        cursor: test;
-        &:focus{ 
+.content-area {
+   margin-top: 15px;
+   min-height: 100vh;
+
+   .block {
+      margin-top: 8px;
+      width: 100%;
+      padding: 0 5px 0 5px;
+      font-size: 16px;
+      border-radius: 4px;
+      cursor: text;
+
+      span {
+         &:focus {
             outline: none;
-        }
-    }
-    div[format='h1']{
-        font-size: 26px;
-        font-weight: bold;
-     }
-     div[format='h2']{
-        font-size: 22px;
-        font-weight: bold;
-     }
-     div[format='h3']{
-        font-size: 20px;
-        font-weight: bold;
-     }
-     div[format='h4']{
-        font-size: 18px;
-        font-weight: bold;
-     }
-     div[format='h5']{
-        font-size: 16px;
-        font-weight: bold;
-     }
-     div[format='h6']{
-        font-size: 14px;
-        font-weight: bold;
-     }
-     div[align]{
-        text-align: arr(align);
-     }
-     div[selected = 'true']{
-        background-color: rgb(217, 229, 254)
-     }
+         }
+
+         &:empty {
+            display: inline-block;
+            width: 20px;
+            height: 24px;
+         }
+
+      }
+
+      span[data-fonttype='bold'] {
+         font-weight: bold;
+      }
+
+      span[data-fonttype='italic'] {
+         font-style: italic;
+      }
+
+      span[data-fonttype='underline'] {
+         text-decoration: underline;
+      }
+
+      span[data-fonttype='delline'] {
+         text-decoration: line-through;
+      }
+   }
+
+   div[format='h1'] {
+      font-size: 26px;
+      font-weight: bold;
+   }
+
+   div[format='h2'] {
+      font-size: 22px;
+      font-weight: bold;
+   }
+
+   div[format='h3'] {
+      font-size: 20px;
+      font-weight: bold;
+   }
+
+   div[format='h4'] {
+      font-size: 18px;
+      font-weight: bold;
+   }
+
+   div[format='h5'] {
+      font-size: 16px;
+      font-weight: bold;
+   }
+
+   div[format='h6'] {
+      font-size: 14px;
+      font-weight: bold;
+   }
+
+   div[align] {
+      text-align: arr(align);
+   }
+
+   div[selected='true'] {
+      background-color: rgb(217, 229, 254)
+   }
+
 }

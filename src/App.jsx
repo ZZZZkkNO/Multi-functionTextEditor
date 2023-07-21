@@ -5,25 +5,18 @@ import SelectionRect from "./components/SelectionRect";
 import SideMenu from "./components/SideMenu";
 import { connect } from "react-redux";
 import action from "./store/actions";
-import { useRef } from "react";
+import React from "react";
 
 function App(props) {
-  const { blur } = props
-  const flag = useRef()
-  const handeBlur = (e) => {
-    if(flag.current.flag === true) return
-    flag.current.changeFlag()
-    blur()  
-  }
   return <div id="editor">
     <div id={styles.navArea}>
       <Toolbar/>
     </div>
-    <div id={styles.editorArea} onClick={handeBlur}>
+    <div id={styles.editorArea}>
       <SelectionRect/>
       <SideMenu/>
       <div className={styles.container}>
-        <EditArea ref={flag}/>
+        <EditArea/>
       </div>
     </div>         
   </div>

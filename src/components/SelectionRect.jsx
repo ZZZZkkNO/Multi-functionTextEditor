@@ -18,6 +18,16 @@ class SelectionRect extends React.Component{
         this.isMouseDown= true
         this.container.current.style['z-index'] = 1001
         this.rect.current.style.cssText = `top: ${this.startY - 64}px; left: ${this.startX}px;width: 0px; height: 0px; display: block`
+        window.onmouseup = (e) => {
+            this.startX = null
+            this.startY = null 
+            this.endX = null
+            this.endY = null
+            this.isMouseDown= false
+            this.container.current.removeAttribute('style')
+            this.rect.current.removeAttribute('style')
+            window.onmouseup = null
+        }
     }
     handMouseMove(e){
         if(this.isMouseDown === false) return
@@ -38,18 +48,18 @@ class SelectionRect extends React.Component{
             }
         }
     }
-    handleMouseUp(e){
-        this.startX = null
-        this.startY = null 
-        this.endX = null
-        this.endY = null
-        this.isMouseDown= false
-        this.container.current.removeAttribute('style')
-        this.rect.current.removeAttribute('style')
-    }
+    // handleMouseUp(e){
+    //     this.startX = null
+    //     this.startY = null 
+    //     this.endX = null
+    //     this.endY = null
+    //     this.isMouseDown= false
+    //     this.container.current.removeAttribute('style')
+    //     this.rect.current.removeAttribute('style')
+    // }
 
     render(){
-        return <div className={styles.container} onMouseDown={this.handleMouseDown.bind(this)} onMouseUp={this.handleMouseUp.bind(this)} onMouseMove={this.handMouseMove.bind(this)} ref={this.container}>
+        return <div className={styles.container} onMouseDown={this.handleMouseDown.bind(this)} onMouseMove={this.handMouseMove.bind(this)} ref={this.container}>
             <div className={styles.rect} ref={this.rect}></div>
         </div>
     }

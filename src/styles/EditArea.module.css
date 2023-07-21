@@ -19,19 +19,33 @@
   margin-top: 15px;
   min-height: 100vh;
 }
-.content-area:focus {
-  outline: none;
-}
 .content-area .block {
   margin-top: 8px;
   width: 100%;
   padding: 0 5px 0 5px;
   font-size: 16px;
   border-radius: 4px;
-  cursor: test;
+  cursor: text;
 }
-.content-area .block:focus {
+.content-area .block span:focus {
   outline: none;
+}
+.content-area .block span:empty {
+  display: inline-block;
+  width: 20px;
+  height: 24px;
+}
+.content-area .block span[data-fonttype='bold'] {
+  font-weight: bold;
+}
+.content-area .block span[data-fonttype='italic'] {
+  font-style: italic;
+}
+.content-area .block span[data-fonttype='underline'] {
+  text-decoration: underline;
+}
+.content-area .block span[data-fonttype='delline'] {
+  text-decoration: line-through;
 }
 .content-area div[format='h1'] {
   font-size: 26px;

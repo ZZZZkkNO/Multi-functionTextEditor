@@ -1,7 +1,7 @@
 import * as TYPES from '../actionTypes'
 
 const editareaAction = {
-    input(obj){
+    updateContext(obj){
         return { 
             type: TYPES.CONTEXT_UPDARE,
             ...obj
@@ -46,6 +46,12 @@ const editareaAction = {
     contentAlign(obj){
         return {
             type: TYPES.CONTENTALIGN,
+            ...obj
+        }
+    },
+    fontFormat(obj){
+        return {
+            type: TYPES.FONTFORMAT,
             ...obj
         }
     }
